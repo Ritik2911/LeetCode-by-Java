@@ -1,0 +1,23 @@
+
+// I hava only provided Code that you have to write in your LeetCode IDE
+
+// But This is recursive approch Which will Produce TLE in LeetCode IDE
+
+class Solution {
+    public int climbStairs(int n) {
+        if(n==1){
+            return 1;
+        }else if(n == 2){
+            return 2;
+        }
+       
+        
+        // For 1 step up
+        int oneStep = climbStairs(n-1);
+        
+        // For 2 step up
+        int twoStep = climbStairs(n-2);
+        
+        return oneStep+twoStep;
+    }
+}
