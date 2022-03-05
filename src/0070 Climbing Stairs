@@ -10,7 +10,6 @@ class Solution {
         }else if(n == 2){
             return 2;
         }
-       
         
         // For 1 step up
         int oneStep = climbStairs(n-1);
