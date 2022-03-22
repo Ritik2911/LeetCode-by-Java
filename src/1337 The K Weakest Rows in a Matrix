@@ -1,0 +1,30 @@
+class Solution {
+
+    // We can also apply binary search in this function
+    int noOfSoldiers(int[] arr){
+        int ans = 0;
+        for(int i=0; i< arr.length ; i++){
+           if( arr[i] == 1 ){
+               ans++ ;
+           }
+        }
+        return ans;
+    } 
+    
+    public int[] kWeakestRows(int[][] mat, int k) {
+        
+        int strength[] = new int[mat.length];
+        for(int i=0; i< mat.length; i++){
+            strength[i] = noOfSoldiers(mat[i]) * 1000 + i;
+        }
+        
+        Arrays.sort(strength);
+        
+        int [] ans = new int[k];
+        for(int i=0; i < k; i++){
+            ans[i] = strength[i]%1000;
+        }
+        
+        return ans ;
+    }
+}
