@@ -1,0 +1,21 @@
+class Solution {
+    public int[] decompressRLElist(int[] nums) {
+        int[] arrMain = new int[0];
+        for(int i = 0; i< nums.length; i+=2){
+            int freq = nums[i];
+            int val = nums[i+1];
+            
+            int[] arr1 = new int[freq];
+            Arrays.fill(arr1,val);
+            
+            int mainSize = arrMain.length;
+            int[] dArray = arrMain.clone();
+            
+            arrMain = new int[mainSize + freq];
+            System.arraycopy(dArray,0,arrMain,0,mainSize);
+            System.arraycopy(arr1,0,arrMain,mainSize,freq);
+            
+        }
+        return arrMain;
+    }
+}
