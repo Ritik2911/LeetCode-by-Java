@@ -1,0 +1,25 @@
+// *** This problem can be solved by multiple methods such as using HashSet or Two pointer or 
+// *** by sorting the array but problem statement says that we need to use constant space and
+// *** wihout modifying array so for that we will solve this problem using **Floyd Warshall Algorithm
+// *** https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/
+
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = 0;  
+        int fast = 0; 
+        
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }while(slow != fast);
+        
+        int slow2 = 0;
+        while(slow != slow2){
+            slow = nums[slow];
+            slow2 = nums[slow2];
+        }
+        
+        return slow;
+    }
+}
