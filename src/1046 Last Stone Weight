@@ -1,0 +1,35 @@
+class Solution {
+    
+    ArrayList heaviest(ArrayList list){
+        if(list.size() == 1){
+            return list;
+        }
+        int largest = Math.max((int)list.get(0),(int)list.get(1));
+        int sLargest = Math.min((int)list.get(0),(int)list.get(1));
+        for(int i = 2; i < list.size(); i++){
+            int temp =(int) list.get(i);
+            if(temp >= largest ){
+                sLargest = largest;
+                largest = temp;
+            }else if(temp >= sLargest){
+                sLargest = temp;
+            }
+        }
+        
+        list.remove((Integer)largest);
+        list.remove((Integer)sLargest);
+        list.add(Math.abs(largest - sLargest));
+        return heaviest(list);
+    }
+    
+    public int lastStoneWeight(int[] stones) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int stone: stones){
+            list.add(stone);
+        }
+        heaviest(list);
+        
+        return list.get(0);
+        
+    }
+}
