@@ -1,0 +1,32 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+    
+       List<String> listOfString = new ArrayList<String>();
+        if(digits.length() == 0 ){
+            return listOfString;
+        }
+        
+        
+       String[] keyCombination = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        digitCombination(listOfString, digits, keyCombination, "", 0);
+        return listOfString;
+    }
+    
+    void digitCombination(List<String> listOfString, String digits, String[] keyCombination, String prevString, int position){
+        
+        if(position >= digits.length()){
+            listOfString.add(prevString);
+            return; 
+        }
+        
+        int num = digits.charAt(position) - '0';
+        String curCombination = keyCombination[num-2];
+        
+        for(int i = 0; i< curCombination.length(); i++){
+            char ch = curCombination.charAt(i);
+            prevString += ch;
+            digitCombination(listOfString,digits, keyCombination, prevString, position+1);
+            prevString=prevString.substring(0, prevString.length()-1);
+        }
+    } 
+}
